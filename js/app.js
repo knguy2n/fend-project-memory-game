@@ -44,12 +44,14 @@ function checkForMatch() {
 
 
 	} else	{
-		openCards[0][0].classList.toggle('open');
-		openCards[0][0].classList.toggle('show');
-		openCards[1][0].classList.toggle('open');
-		openCards[1][0].classList.toggle('show');
-		openCards = [];
-		console.log('Not a match!');
+		setTimeout(() => {
+			openCards[0][0].classList.toggle('open');
+			openCards[0][0].classList.toggle('show');
+			openCards[1][0].classList.toggle('open');
+			openCards[1][0].classList.toggle('show');
+			openCards = [];
+		}, 600);
+		
 	}
 
 
