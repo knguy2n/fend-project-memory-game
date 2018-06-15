@@ -4,10 +4,21 @@
 
 let allCards = Array.from($('li.card'));
 
-let openCards = Array.from($('li.open'));
+let openCards = [];
 
 let matchedCards = Array.from($('li.match'));
 
+$('.deck').on('click', event => {
+	const clickTarget = $(event.target);
+	if (clickTarget.hasClass('card')) {
+		flipCards(clickTarget);
+		}
+	});
+
+function flipCards(clickTarget) {
+	clickTarget.toggleClass("open");
+	clickTarget.toggleClass("show");
+};
 
 
 /*
