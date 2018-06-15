@@ -14,7 +14,11 @@ let matchedCards = Array.from($('li.match'));
 
 $('.deck').on('click', event => {
 	const clickTarget = $(event.target);
-	if (clickTarget.hasClass('card') && openCards.length < 2 ) {
+	if (clickTarget.hasClass('card') && 
+		!clickTarget.hasClass('match') &&
+		openCards.length < 2 &&
+		!openCards.includes(clickTarget)
+		) {
 		flipCards(clickTarget);
 		addOpenCards(clickTarget);
 		if (openCards.length ===2) {
