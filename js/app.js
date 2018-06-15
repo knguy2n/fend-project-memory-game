@@ -10,8 +10,13 @@ let matchedCards = Array.from($('li.match'));
 
 $('.deck').on('click', event => {
 	const clickTarget = $(event.target);
-	if (clickTarget.hasClass('card')) {
+	if (clickTarget.hasClass('card') && openCards.length < 2 ) {
 		flipCards(clickTarget);
+		addOpenCards(clickTarget);
+		if (openCards.length ===2) {
+			console.log('2cards')
+			checkForMatch();
+		}
 		}
 	});
 
@@ -19,6 +24,22 @@ function flipCards(clickTarget) {
 	clickTarget.toggleClass("open");
 	clickTarget.toggleClass("show");
 };
+
+function addOpenCards(clickTarget) {
+	openCards.push(clickTarget);
+}
+
+function checkForMatch() {
+	if (
+		openCards[0].firstElementChild.className() === openCards[1].firstElementChild.className()
+		) {
+		console.log('Match!');
+	} else	{
+		console.log('Not a match!');
+	}
+
+
+}
 
 
 /*
