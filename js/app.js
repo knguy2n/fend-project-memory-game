@@ -1,7 +1,14 @@
 /*
  * Create a list that holds all of your cards
  */
-const Allcards = $('li.card');
+
+let allCards = Array.from($('li.card'));
+
+let openCards = Array.from($('li.open'));
+
+let matchedCards = Array.from($('li.match'));
+
+
 
 /*
  * Display the cards on the page
@@ -11,8 +18,8 @@ const Allcards = $('li.card');
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+function shuffle(allCards) {
+    var currentIndex = allCards.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
