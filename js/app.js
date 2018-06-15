@@ -2,6 +2,10 @@
  * Create a list that holds all of your cards
  */
 
+$(document).on("load")
+
+
+
 let allCards = Array.from($('li.card'));
 
 let openCards = [];
@@ -21,8 +25,8 @@ $('.deck').on('click', event => {
 	});
 
 function flipCards(clickTarget) {
-	clickTarget.toggleClass("open");
-	clickTarget.toggleClass("show");
+	clickTarget.toggleClass('open');
+	clickTarget.toggleClass('show');
 };
 
 function addOpenCards(clickTarget) {
@@ -30,16 +34,28 @@ function addOpenCards(clickTarget) {
 }
 
 function checkForMatch() {
-	if (
-		openCards[0].firstElementChild.className() === openCards[1].firstElementChild.className()
+	if ( openCards[0][0].innerHTML === openCards[1][0].innerHTML //error states can't find class name of undefined
 		) {
+		openCards[0][0].classList.toggle('match');
+		openCards[1][0].classList.toggle('match');
+		openCards = [];
 		console.log('Match!');
+	// change css to match, move cards from open -> matched array
+
+
 	} else	{
+		openCards[0][0].classList.toggle('open');
+		openCards[0][0].classList.toggle('show');
+		openCards[1][0].classList.toggle('open');
+		openCards[1][0].classList.toggle('show');
+		openCards = [];
 		console.log('Not a match!');
 	}
 
 
 }
+
+
 
 
 /*
@@ -50,8 +66,8 @@ function checkForMatch() {
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(allCards) {
-    var currentIndex = allCards.length, temporaryValue, randomIndex;
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
