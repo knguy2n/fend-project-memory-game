@@ -2,10 +2,6 @@
  * Create a list that holds all of your cards
  */
 
-$(document).on("load")
-
-
-
 let allCards = Array.from($('li.card'));
 
 let openCards = [];
@@ -54,7 +50,7 @@ function checkForMatch() {
 			openCards[1][0].classList.toggle('open');
 			openCards[1][0].classList.toggle('show');
 			openCards = [];
-		}, 600);
+		}, 800);
 		
 	}
 
@@ -71,6 +67,11 @@ function checkForMatch() {
  *   - add each card's HTML to the page
  */
 
+
+//function setup from https://matthewcranford.com/memory-game-walkthrough-part-4-shuffling-decks/
+
+
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -86,7 +87,30 @@ function shuffle(array) {
     return array;
 }
 
+function shuffleDeck() {
+	const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
+	const shuffledCards = shuffle(cardsToShuffle);
+	for (card of shuffledCards) {
+		$('.deck').append(card);
+	}
 
+
+}
+shuffleDeck();
+
+
+//function shuffle(array) {
+    //var currentIndex = array.length, temporaryValue, randomIndex;
+
+    //while (currentIndex !== 0) {
+        //randomIndex = Math.floor(Math.random() * currentIndex);
+        //currentIndex -= 1;
+        //array[currentIndex] = array[randomIndex];
+        //array[randomIndex] = temporaryValue;
+    //}
+
+    //return array;
+//}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
