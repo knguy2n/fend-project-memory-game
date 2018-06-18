@@ -8,6 +8,10 @@ let openCards = [];
 
 let matchedCards = Array.from($('li.match'));
 
+let moves = 0;
+
+
+
 $('.deck').on('click', event => {
 	const clickTarget = $(event.target);
 	if (clickTarget.hasClass('card') && 
@@ -20,9 +24,17 @@ $('.deck').on('click', event => {
 		if (openCards.length ===2) {
 			console.log('2cards')
 			checkForMatch();
+			movesCount();
+			//add moves function 
 		}
 		}
 	});
+
+function movesCount() {
+	$('span.moves').empty();
+	++moves;
+	$('span.moves').append(moves);
+}
 
 function flipCards(clickTarget) {
 	clickTarget.toggleClass('open');
@@ -93,24 +105,9 @@ function shuffleDeck() {
 	for (card of shuffledCards) {
 		$('.deck').append(card);
 	}
-
-
 }
 shuffleDeck();
 
-
-//function shuffle(array) {
-    //var currentIndex = array.length, temporaryValue, randomIndex;
-
-    //while (currentIndex !== 0) {
-        //randomIndex = Math.floor(Math.random() * currentIndex);
-        //currentIndex -= 1;
-        //array[currentIndex] = array[randomIndex];
-        //array[randomIndex] = temporaryValue;
-    //}
-
-    //return array;
-//}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
