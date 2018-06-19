@@ -46,15 +46,28 @@ $('.deck').on('click', event => {
 			checkForMatch();
 			movesCount();
 			gamedone(); //add function for done modal
+			starCount();
 		}
 		}
 	});
-//Moves counter function 
+//Moves count function 
 function movesCount() {
 	$('span.moves').empty();
 	++moves;
 	$('span.moves').append(moves);
 }
+
+//star count function
+function starCount() {
+	if (moves > 2) {
+		$('#three').remove();
+	} 
+	if (moves > 5) {
+		$('#two').remove();
+	}
+
+};
+
 //function to show cards
 function flipCards(clickTarget) {
 	clickTarget.toggleClass('open');
@@ -63,7 +76,7 @@ function flipCards(clickTarget) {
 //function to move cards to open array
 function addOpenCards(clickTarget) {
 	openCards.push(clickTarget);
-}
+};
 //Check if cards match and move them to the matchedCards array
 function checkForMatch() {
 	if ( openCards[0][0].innerHTML === openCards[1][0].innerHTML 
@@ -86,7 +99,7 @@ function checkForMatch() {
 	}
 
 
-}
+};
 // when all cards are matched show game complete message
 function gamedone() {
 	if (matchedCards.length === 16) {
