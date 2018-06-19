@@ -10,16 +10,50 @@ let matchedCards = [];
 
 let moves = 0;
 
+let sec = 0;
+let min = 0;
+let timer;
+
+//timer functions (source:https://gwgnanodegrees.slack.com/files/UA8PXHUR3/FB0Q3CSMB/Getting_the_Memory_Game_timer_to_work)
+
+function startTimer() {
+	timer = setInterval(insertTime,1000);
+};
+
+function stopTimer(){
+	clearInterval(timer);
+}
+
+function insertTime() {
+	sec++;
+	if (sec < 10) {
+		sec = `0${sec}`;
+	}
+	if (sec >= 60) {
+		min++;
+		sec = "00";
+	}
+
+	let output = "0"+ min + ":" + sec;
+
+	//display time
+
+	$('.timer').empty();
+	$('.timer').append(output);
+};
+
+$(document).ready(function(){
+	startTimer();
+	insertTime();
+});
 
 
-
-
+//refresh function
 $('i.fa-repeat').on('click', event => {
 	const clickTarget = $(event.target);
 	if (clickTarget.hasClass('fa-repeat')) {
 		window.location.reload(false);
-	}
-	
+	}	
 });
 
 
@@ -31,6 +65,9 @@ $('i.fa-repeat').on('click', event => {
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+
+
+
 
 $('.deck').on('click', event => {
 	const clickTarget = $(event.target);
@@ -47,6 +84,8 @@ $('.deck').on('click', event => {
 			movesCount();
 			gamedone(); //add function for done modal
 			starCount();
+			
+			
 		}
 		}
 	});
@@ -103,6 +142,7 @@ function checkForMatch() {
 // when all cards are matched show game complete message
 function gamedone() {
 	if (matchedCards.length === 16) {
+		stopTimer();
 		console.log("Game Complete!")
 		//need to add code for popup
 	}
