@@ -2,19 +2,29 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+* [Instructions](#Overview)
+* [Features](#Features)
 
-## Instructions
+## Overview
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+This project is a fully functional matching card game! Starter code & styles were provided by Udacity. The majority of this work to make the project interactive is done in the app.js file
 
-To get started, open `js/app.js` and start building out the app's functionality
+
 
 For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
 
-## Contributing
+## Features
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+1. Timer functions were built to show user how long it takes them to complete a challenge
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+2. Shuffle function from http://stackoverflow.com/a/2450976 was implemented to ensure each game was unique
+
+
+3. Move count informs user how many matches they've attempted throughout the game
+
+4. Star count rates the user's performance during the game
+
+5. Restart button reloads page to reset timer, move count & star rating
+
+
+
