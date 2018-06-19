@@ -6,11 +6,31 @@ let allCards = Array.from($('li.card'));
 
 let openCards = [];
 
-let matchedCards = Array.from($('li.match'));
+let matchedCards = [];
 
 let moves = 0;
 
 
+
+
+
+$('i.fa-repeat').on('click', event => {
+	const clickTarget = $(event.target);
+	if (clickTarget.hasClass('fa-repeat')) {
+		window.location.reload(false);
+	}
+	
+});
+
+
+
+
+/*
+ * Display the cards on the page
+ *   - shuffle the list of cards using the provided "shuffle" method below
+ *   - loop through each card and create its HTML
+ *   - add each card's HTML to the page
+ */
 
 $('.deck').on('click', event => {
 	const clickTarget = $(event.target);
@@ -25,36 +45,35 @@ $('.deck').on('click', event => {
 			console.log('2cards')
 			checkForMatch();
 			movesCount();
-			//add moves function 
+			gamedone(); //add function for done modal
 		}
 		}
 	});
-
+//Moves counter function 
 function movesCount() {
 	$('span.moves').empty();
 	++moves;
 	$('span.moves').append(moves);
 }
-
+//function to show cards
 function flipCards(clickTarget) {
 	clickTarget.toggleClass('open');
 	clickTarget.toggleClass('show');
 };
-
+//function to move cards to open array
 function addOpenCards(clickTarget) {
 	openCards.push(clickTarget);
 }
-
+//Check if cards match and move them to the matchedCards array
 function checkForMatch() {
-	if ( openCards[0][0].innerHTML === openCards[1][0].innerHTML //error states can't find class name of undefined
+	if ( openCards[0][0].innerHTML === openCards[1][0].innerHTML 
 		) {
 		openCards[0][0].classList.toggle('match');
 		openCards[1][0].classList.toggle('match');
+		matchedCards.push(openCards[0][0]);
+		matchedCards.push(openCards[0][1]);
 		openCards = [];
 		console.log('Match!');
-	// change css to match, move cards from open -> matched array
-
-
 	} else	{
 		setTimeout(() => {
 			openCards[0][0].classList.toggle('open');
@@ -68,21 +87,13 @@ function checkForMatch() {
 
 
 }
-
-
-
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
-
-//function setup from https://matthewcranford.com/memory-game-walkthrough-part-4-shuffling-decks/
-
-
+// when all cards are matched show game complete message
+function gamedone() {
+	if (matchedCards.length === 16) {
+		console.log("Game Complete!")
+		//need to add code for popup
+	}
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -98,7 +109,7 @@ function shuffle(array) {
 
     return array;
 }
-
+//function setup from https://matthewcranford.com/memory-game-walkthrough-part-4-shuffling-decks/
 function shuffleDeck() {
 	const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
 	const shuffledCards = shuffle(cardsToShuffle);
