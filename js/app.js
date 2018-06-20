@@ -13,6 +13,7 @@ let moves = 0;
 let sec = 0;
 let min = 0;
 let timer;
+let stars = 0;
 
 //timer functions (source:https://gwgnanodegrees.slack.com/files/UA8PXHUR3/FB0Q3CSMB/Getting_the_Memory_Game_timer_to_work)
 
@@ -98,11 +99,17 @@ function movesCount() {
 
 //star count function
 function starCount() {
-	if (moves > 2) {
+	if (moves <= 18) {
+		stars = 3;
+	}
+
+	if (moves > 20) {
 		$('#three').remove();
+		stars = 2;
 	} 
-	if (moves > 5) {
+	if (moves > 30) {
 		$('#two').remove();
+		starts = 1;
 	}
 
 };
@@ -150,9 +157,10 @@ function gamedone() {
 
 function togglePopup() {
 	const modal = $('.popupBackground');
-	$(modal).toggleClass('hide');
+	modal.toggleClass('hideit');
 }
-togglePopup()
+togglePopup();
+togglePopup();
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
