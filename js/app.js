@@ -175,6 +175,15 @@ function togglePopup() {
 	const modal = $('.popupBackground');
 	modal.toggleClass('hideit');
 }
+//cancel button on popup
+$('.popupCancel').on('click',() =>{
+	togglePopup();
+});
+
+//Replay button
+$('.popupReplay').on('click', () => {
+	window.location.reload(false);
+});
 
 
 
