@@ -4,6 +4,7 @@
 
 * [Instructions](#Overview)
 * [Features](#Features)
+* [Sources](#Sources)
 
 ## Overview
 
@@ -26,5 +27,14 @@ For specific, detailed instructions, look at the project instructions in the [Ud
 
 5. Restart button reloads page to reset timer, move count & star rating
 
+6. Pop up provides Game Stats to user
+
+
+## Sources
+These sources were use to build this project
+
+https://matthewcranford.com/blog/
+https://gwgnanodegrees.slack.com/files/UA8PXHUR3/FB0Q3CSMB/Getting_the_Memory_Game_timer_to_work
+http://api.jquery.com/html/
 
 
