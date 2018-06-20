@@ -133,7 +133,7 @@ h1 {
 }
 
 .popupBody {
-    
+    z-index: 1;
     position: relative;
     width: 400px;
     overflow: auto;

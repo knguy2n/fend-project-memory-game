@@ -99,17 +99,17 @@ function movesCount() {
 
 //star count function
 function starCount() {
-	if (moves <= 18) {
+	if (moves <= 12) {
 		stars = 3;
 	}
 
-	if (moves > 20) {
+	if (moves > 12) {
 		$('#three').remove();
 		stars = 2;
 	} 
-	if (moves > 30) {
+	if (moves >= 20) {
 		$('#two').remove();
-		starts = 1;
+		stars = 1;
 	}
 
 };
@@ -151,16 +151,32 @@ function gamedone() {
 	if (matchedCards.length === 16) {
 		stopTimer();
 		console.log("Game Complete!")
+		writeGameStats();
+		togglePopup();
 		//need to add toggle popup
 	}
 }
 
+//function to pull stats for popup
+function writeGameStats() {
+	const timeStat = $('.timeStat');
+	const clockTime = $('span.timer').html();
+	const movesStat = $('.movesStat');
+	const starsStat = $('.starsStat')
+
+	timeStat.html(`Time = ${clockTime}`);
+	movesStat.html(`Moves = ${moves}`);
+	starsStat.html(`Stars = ${stars}`);
+}
+
+
+//function to toggle Stats popup
 function togglePopup() {
 	const modal = $('.popupBackground');
 	modal.toggleClass('hideit');
 }
-togglePopup();
-togglePopup();
+
+
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
