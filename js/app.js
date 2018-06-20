@@ -144,9 +144,15 @@ function gamedone() {
 	if (matchedCards.length === 16) {
 		stopTimer();
 		console.log("Game Complete!")
-		//need to add code for popup
+		//need to add toggle popup
 	}
 }
+
+function togglePopup() {
+	const modal = $('.popupBackground');
+	$(modal).toggleClass('hide');
+}
+togglePopup()
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
