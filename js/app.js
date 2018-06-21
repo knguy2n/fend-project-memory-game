@@ -75,7 +75,7 @@ $('.deck').on('click', event => {
 	if (clickTarget.hasClass('card') && 
 		!clickTarget.hasClass('match') &&
 		openCards.length < 2 &&
-		!openCards.includes(clickTarget)
+		!clickTarget.hasClass('open')
 		) {
 		flipCards(clickTarget);
 		addOpenCards(clickTarget);
